@@ -1,0 +1,44 @@
+{
+  "name": "ldpmodule",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "eslintConfig": {
+    "extends": [
+      "plugin:react/recommended",
+      "google",
+      "react-app",
+      "prettier"
+    ],
+    "rules": {
+      "require-jsdoc": 0,
+      "no-explicit-any": 0,
+      "react/jsx-indent": 0,
+      "new-cap": 0,
+      "react/no-unescaped-entities": 0,
+      "import/order": 0,
+      "prettier/prettier": [
+        "error",
+        {
+          "semi": true,
+          "parser": "typescript"
+        }
+      ]
+    },
+    "plugins": [
+      "prettier"
+    ],
+    "parser": "@typescript-eslint/parser"
+  },
+  "devDependencies": {
+    "ts-node": "^10.5.0"
+  },
+  "dependencies": {
+    "typescript": "^4.5.5"
+  }
+}
