@@ -95,7 +95,7 @@ export const _bodyFatPercentageDefaultConfig: INumericalAttributeConfig = {
 };
 
 export const _bodyMassDefaultConfig: INumericalAttributeConfig = {
-    legalMax: 999,
+    legalMax: 999999,
     legalMin: 0,
     bins: {
         interval: { min: 2000, max: 140000 },
@@ -172,16 +172,16 @@ export const _heartRateDefaultConfig: INumericalAttributeConfig = {
 };
 
 export const _heartRateVariabilitySDNDefaultConfig: INumericalAttributeConfig =
-    {
-        legalMax: 99,
-        legalMin: 0,
-        bins: {
-            interval: { min: 0, max: 99 },
-            buckets: 15,
-        },
-        unit: Units.ms,
-        attribute: HDKdataAttribute.heartRateVariabilitySDN,
-    };
+{
+    legalMax: 99,
+    legalMin: 0,
+    bins: {
+        interval: { min: 0, max: 99 },
+        buckets: 15,
+    },
+    unit: Units.ms,
+    attribute: HDKdataAttribute.heartRateVariabilitySDN,
+};
 
 export const _heightDefaultConfig: INumericalAttributeConfig = {
     legalMax: 999,
@@ -239,16 +239,16 @@ export const _peakExpiratoryFlowRateDefaultConfig: INumericalAttributeConfig = {
 };
 
 export const _peripheralPerfusionIndexDefaultConfig: INumericalAttributeConfig =
-    {
-        legalMax: 99,
-        legalMin: 0,
-        bins: {
-            interval: { min: 0.02, max: 20 },
-            buckets: 15,
-        },
-        unit: Units.percentage,
-        attribute: HDKdataAttribute.peripheralPerfusionIndex,
-    };
+{
+    legalMax: 99,
+    legalMin: 0,
+    bins: {
+        interval: { min: 0.02, max: 20 },
+        buckets: 15,
+    },
+    unit: Units.percentage,
+    attribute: HDKdataAttribute.peripheralPerfusionIndex,
+};
 
 export const _respiratoryRateDefaultConfig: INumericalAttributeConfig = {
     legalMax: 99,
@@ -295,13 +295,13 @@ export const _vo2MaxDefaultConfig: INumericalAttributeConfig = {
 };
 
 export const _walkingHeartRateAverageDefaultConfig: INumericalAttributeConfig =
-    {
-        legalMax: 999,
-        legalMin: 0,
-        bins: {
-            interval: { min: 50, max: 140 },
-            buckets: 15,
-        },
-        unit: Units.beatPerMinute,
-        attribute: HDKdataAttribute.walkingHeartRateAverage,
-    };
+{
+    legalMax: 999,
+    legalMin: 0,
+    bins: {
+        interval: { min: 50, max: 140 },
+        buckets: 15,
+    },
+    unit: Units.beatPerMinute,
+    attribute: HDKdataAttribute.walkingHeartRateAverage,
+};

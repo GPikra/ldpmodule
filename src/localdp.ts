@@ -1,10 +1,11 @@
 import { IHistogramIndex, IHistorgramDimensions } from './types/histogram';
 
 /**
- * Class for applying ldp
+ * @summary Class for applying ldp
  */
 class LocalDifferentialPrivacy {
-    /** This function implements the preferential sampling algorithm for differential privacy.
+    /** 
+     * @summary This function implements the preferential sampling algorithm for differential privacy.
      * It returns 'index' with probability 'ps' and another index uniformly at random with
      * probability 1 - ps.
      * @param index - The only non-zero value in the multidimensional histogram.
@@ -33,10 +34,12 @@ class LocalDifferentialPrivacy {
         }
     }
 
-    /** This function implements the repeated sampling algorithm for differential privacy.
+    /** 
+     * @summary This function implements the repeated sampling algorithm for differential privacy.
      * It flips 'index' with probability 'ps' and every other position with probability 1 - ps.
      * Returns non-zero indices after flipping. 'index' is the only non-zero value in the
      * multidimensional histogram
+     * @Caution This will not work for large histograms!!!
      * @param index - The only non-zero value in the multidimensional histogram.
      * @param histogramShape - The shape of the multidimensional histogram.
      * @param ps - The probability of not flipping the true index. Controls the privacy leakage.
@@ -74,7 +77,8 @@ class LocalDifferentialPrivacy {
         return output;
     }
 
-    /** This function implements the repeated sampling algorithm for differential privacy.
+    /**
+     * @summary This function implements the repeated sampling algorithm for differential privacy.
      * It flips 'index' with probability 'ps' and every other position with probability 1 - ps.
      * Returns non-zero indices after flipping. 'index' is the only non-zero value in the
      * multidimensional histogram
@@ -104,7 +108,8 @@ class LocalDifferentialPrivacy {
         return output;
     }
 
-    /** This function gets an index given the dimensions of the histogram uniformly at random
+    /** 
+     * @summary This function gets an index given the dimensions of the histogram uniformly at random
      * @param histogramShape - The shape of the multidimensional histogram.
      * @param exclude - Array of indices to exclude from sampling
      */
@@ -123,7 +128,7 @@ class LocalDifferentialPrivacy {
             throw new RangeError('Too many indices are excluded');
         }
         histogramShape.forEach((dim: number, _idx: number) => {
-            output.push(this._getRandomIntegerInRange(0, dim));
+            output.push(this.getRandomIntegerInRange(0, dim));
         });
         if (this._deepIncludes(exclude, output)) {
             return this._getUniformRandomIndex(histogramShape, exclude);
@@ -131,7 +136,7 @@ class LocalDifferentialPrivacy {
         return output;
     }
     /**
-     * This function finds whether item is included in array
+     * @summary This function finds whether item is included in array
      * @param arr - Array to search item in
      * @param item - Item to search in array
      * @returns - if item is included in array
@@ -148,7 +153,8 @@ class LocalDifferentialPrivacy {
         return false;
     }
 
-    /** Compare two arrays for equality
+    /** 
+     * @summary Compare two arrays for equality
      * @param arr1 - First
      * @param arr2 - Second
      * @returs - if arr1 === arr2
@@ -161,18 +167,23 @@ class LocalDifferentialPrivacy {
         }
     }
 
-    /** Return a random integer in the given range
+    /** 
+     * @summary Return a random integer in the given range
      * @param min - Minimum value of return
      * @param max - Maximum value of return
      */
-    private static _getRandomIntegerInRange(min: number, max: number): number {
+    public static getRandomIntegerInRange(min: number, max: number): number {
         if (max <= min) {
             throw new RangeError("'max' parameter must be greater than 'min'.");
+        }
+        if (max === undefined || min === undefined || max === null || min === null) {
+            throw new RangeError("'max' and 'min' cannot be null or undefined")
         }
         return Math.floor(Math.random() * (max - min) + min);
     }
 
-    /** This function checks whether the given number is a valid probability
+    /** 
+     * @summary This function checks whether the given number is a valid probability
      * @param p - Value to check
      */
     private static _assertValidProbability(p: number): void {
@@ -181,7 +192,8 @@ class LocalDifferentialPrivacy {
         }
     }
 
-    /** This function checks whether the given 'index' is valid for a histogram with shape 'histogramShape'
+    /** 
+    * @summary This function checks whether the given 'index' is valid for a histogram with shape 'histogramShape'
     and whether 'histogramShape' is valid
     * @param index - index to check for validity
     * @param histogramShape - The shape of the multidimensional histogram.

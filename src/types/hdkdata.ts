@@ -72,9 +72,11 @@ export interface INumericalAttributeConfig {
 }
 
 export type IHistogramValue = {
-    [key in HDKdataAttribute]?: number | null;
+    attribute: HDKdataAttribute;
+    value: number | null;
 };
 
 export type IHistogramConfig = {
-    [key in HDKdataAttribute]?: INumericalAttributeConfig;
+    attribute: HDKdataAttribute;
+    config: INumericalAttributeConfig;
 };
